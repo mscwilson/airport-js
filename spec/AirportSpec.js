@@ -1,3 +1,5 @@
+"use strict";
+
 describe("Airport", function() {
 
   it("should have an array", function() {
@@ -17,6 +19,17 @@ describe("Airport", function() {
     airport.takeoffPlane("plane");
     expect(airport.hanger).not.toContain("plane");
   });
+
+  it("prevents landing when full", function() {
+      let airport = new Airport();
+      airport.landPlane("plane");
+      expect(function () {
+        airport.landPlane("another plane");
+        }).toThrowError("Hanger full");
+  });
+
+
+      
 
 
 });

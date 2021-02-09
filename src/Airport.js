@@ -5,7 +5,12 @@ class Airport {
 
 
   landPlane(plane) {
+    if (this.hanger.length === 1) {
+      throw new Error("Hanger full")
+    }
+    else {
     this.hanger.push(plane);
+  }
   };
 
   takeoffPlane(plane) {
