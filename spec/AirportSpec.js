@@ -28,8 +28,14 @@ describe("Airport", function() {
         }).toThrowError("Hanger full");
   });
 
-
-      
-
+  it("has a default capacity that can be overridden", function() {
+    let airport = new Airport(3);
+    airport.landPlane("plane");
+    airport.landPlane("plane");
+    airport.landPlane("plane");
+    expect(function () {
+      airport.landPlane("another plane");
+      }).toThrowError("Hanger full");
+    });
 
 });

@@ -1,11 +1,13 @@
 class Airport {
-  constructor() {
+
+  constructor(default_capacity = 1) {
     this.hanger = []
+    this.DEFAULT_CAPACITY = default_capacity
   }
 
 
   landPlane(plane) {
-    if (this.hanger.length === 1) {
+    if (this.hanger.length === this.DEFAULT_CAPACITY) {
       throw new Error("Hanger full")
     }
     else {
