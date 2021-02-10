@@ -10,6 +10,9 @@ class Airport {
     if (this.hanger.length === this.capacity) {
       throw new Error("Hanger full")
     }
+    else if (this.isStormy() === true) {
+      throw new Error("Weather too bad for landing")
+    }
     else {
     this.hanger.push(plane);
     }
@@ -24,7 +27,13 @@ class Airport {
   };
 
   isStormy() {
-    false
+    let randomVar = Math.random();
+    if (randomVar < 0.9) {
+      return false
+    }
+    else {
+      return true
+    };
   };
 
 

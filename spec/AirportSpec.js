@@ -1,10 +1,11 @@
 "use strict";
 
 describe("Airport", function() {
-  let airport;
+  let airport, stormySpy;
 
   beforeEach(function() {
     airport = new Airport();
+    stormySpy = spyOn(airport, "isStormy").and.returnValue(false);
   })
 
   it("should have an array", function() {
@@ -31,6 +32,8 @@ describe("Airport", function() {
 
   it("has a default capacity that can be overridden", function() {
     let airport = new Airport(3);
+    let newStormySpy = spyOn(airport, "isStormy").and.returnValue(false);
+
     airport.landPlane("plane");
     airport.landPlane("plane");
     airport.landPlane("plane");
@@ -40,21 +43,33 @@ describe("Airport", function() {
     });
 
   it("checks for weather at takeoff", function() {
-    spyOn(airport, "isStormy");
-
     airport.takeoffPlane("plane");
     expect(airport.isStormy).toHaveBeenCalledWith();
   });
 
   it("prevents takeoff in bad weather", function() {
-    spyOn(airport, "isStormy").and.returnValue(true);
+    stormySpy.and.returnValue(true);
     expect(function() {
       airport.takeoffPlane("plane");
     }).toThrowError("Weather too bad for takeoff");
   });
 
   it("prevents landing in bad weather", function() {
+    stormySpy.and.returnValue(true);
+    expect(function() {
+      airport.landPlane("plane");
+    }).toThrowError("Weather too bad for landing");
+  })
 
+  it("is only occasionally stormy", function(){
+    stormySpy.and.callThrough();
+    let results = []
+    for (let step = 0; step < 100; step++) {
+      results.push(airport.isStormy())
+    }
+    let uniqueResults = [...new Set(results)]
+    uniqueResults.sort()
+    expect(uniqueResults).toEqual([false, true])
   })
 
 });
