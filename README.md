@@ -42,7 +42,7 @@ To try out the project:
   * In Chrome: View > Developer > Developer Tools > Console tab  
 
 Here's a screenshot of the code in action:  
-![airport in firefox](airport.png)  
+![airport in firefox](airport_new.png)  
 
 
 ### Known Issues
