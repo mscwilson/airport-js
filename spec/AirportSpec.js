@@ -20,16 +20,16 @@ describe("Airport", function() {
     expect(airport.hanger).not.toContain("plane");
   });
 
-  it("prevents landing when full", function() {
-      let airport = new Airport();
-      airport.landPlane("plane");
-      expect(function () {
-        airport.landPlane("another plane");
-        }).toThrowError("Hanger full");
-  });
+  // it("prevents landing when full", function() {
+  //     let airport = new Airport();
+  //     airport.landPlane("plane");
+  //     expect(function () {
+  //       airport.landPlane("another plane");
+  //       }).toThrowError("Hanger full");
+  // });
 
 
-      
+
 
 
 });
