@@ -1,20 +1,20 @@
 class Airport {
 
   constructor(capacity = 1) {
-    this.hanger = []
+    this.hangar = []
     this.capacity = capacity
   }
 
 
   landPlane(plane) {
-    if (this.hanger.length === this.capacity) {
+    if (this.hangar.length === this.capacity) {
       throw new Error("Hanger full")
     }
     else if (this.isStormy() === true) {
       throw new Error("Weather too bad for landing")
     }
     else {
-    this.hanger.push(plane);
+    this.hangar.push(plane);
     }
   };
 
@@ -22,8 +22,8 @@ class Airport {
     if (this.isStormy() === true) {
       throw new Error("Weather too bad for takeoff")
     }
-    let index = this.hanger.indexOf(plane)
-    this.hanger.splice(index);
+    let index = this.hangar.indexOf(plane)
+    this.hangar.splice(index);
   };
 
   isStormy() {

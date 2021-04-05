@@ -11,18 +11,18 @@ describe("Airport", function() {
   describe("has some functions", function() {
 
     it("should have an array", function() {
-    expect(airport.hanger).toEqual([]);
+    expect(airport.hangar).toEqual([]);
     });
 
-    it("can add item to hanger array", function() {
+    it("can add item to hangar array", function() {
       airport.landPlane("plane");
-      expect(airport.hanger).toEqual(["plane"]);
+      expect(airport.hangar).toEqual(["plane"]);
     });
 
-    it("can remove an item from the hanger array", function () {
+    it("can remove an item from the hangar array", function () {
       airport.landPlane("plane");
       airport.takeoffPlane("plane");
-      expect(airport.hanger).not.toContain("plane");
+      expect(airport.hangar).not.toContain("plane");
     });
 
     it("prevents landing when full", function() {
